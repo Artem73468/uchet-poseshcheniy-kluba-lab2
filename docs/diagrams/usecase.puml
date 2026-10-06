@@ -1,0 +1,48 @@
+@startuml
+title Use Case диаграмма «Учёт посещений клуба»
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Администратор\nклуба" as Admin
+actor "Клиент" as Client
+actor "Руководитель\nклуба" as Manager
+
+rectangle "Информационная система\n«Учёт посещений клуба»" {
+
+  usecase "Вход в систему" as Login
+  usecase "Авторизация" as Auth
+  usecase "Регистрация\nклиента" as Register
+  usecase "Оформление\nабонемента" as Subscription
+  usecase "Регистрация\nпосещения" as Visit
+  usecase "Проверка\nабонемента" as Check
+  usecase "Просмотр истории\nпосещений" as History
+  usecase "Просмотр\nсвоего абонемента" as MySubscription
+  usecase "Поиск клиента" as Search
+  usecase "Формирование\nотчётов" as Reports
+  usecase "Просмотр статистики\nпосещений" as Statistics
+  usecase "Проверка действительности\nабонемента" as Validity
+  usecase "Сохранение\nпосещения" as SaveVisit
+}
+
+Admin --> Login
+Admin --> Register
+Admin --> Subscription
+Admin --> Visit
+Admin --> Check
+Admin --> History
+Admin --> Search
+Admin --> Reports
+
+Client --> MySubscription
+Client --> History
+
+Manager --> Statistics
+Manager --> Reports
+
+Login ..> Auth : <<include>>
+Subscription ..> Validity : <<include>>
+Subscription ..> SaveVisit : <<include>>
+MySubscription ..> History : <<extend>>
+
+@enduml

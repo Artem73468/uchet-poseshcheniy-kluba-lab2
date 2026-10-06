@@ -1,0 +1,13 @@
+# Build files
+*.exe
+*.o
+*.obj
+build/
+bin/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
